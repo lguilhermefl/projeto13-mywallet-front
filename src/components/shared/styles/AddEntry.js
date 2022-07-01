@@ -14,6 +14,10 @@ const AddEntry = styled.button`
     box-sizing: border-box;
     padding: 10px;
     border: none;
+
+    ion-icon {
+        font-size: 22px;
+    }
 `
 
 export default AddEntry;

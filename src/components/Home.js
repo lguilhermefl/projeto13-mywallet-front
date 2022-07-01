@@ -3,20 +3,24 @@ import styled from 'styled-components';
 import AddEntry from './shared/styles/AddEntry';
 import Container from "./shared/styles/Container";
 import Header from "./shared/styles/Header";
+import exit from '../assets/icons/exit.svg'
 
 export default function Home() {
     return (
         <Container>
-            <Header>Olá, Fulano</Header>
+            <Header>
+                <span>Olá, Fulano</span>
+                <img src={exit} alt="Exit" />
+            </Header>
             <History></History>
             <EntryBox>
                 <AddEntry>
-                    <span>botão</span>
-                    <span>Nova entrada</span>
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                    <Entry>Nova entrada</Entry>
                 </AddEntry>
                 <AddEntry>
-                    <span>botão</span>
-                    <span>Nova saída</span>
+                    <ion-icon name="remove-circle-outline"></ion-icon>
+                    <Entry>Nova saída</Entry>
                 </AddEntry>
             </EntryBox>
         </Container>
@@ -36,4 +40,10 @@ const EntryBox = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 15px;
+`
+
+const Entry = styled.span`
+    word-break: break-word;
+    width: 80px;
+    text-align: left;
 `
