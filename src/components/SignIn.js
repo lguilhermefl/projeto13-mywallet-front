@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 
-import Container from '../shared/styles/Container.js';
-import Logo from '../shared/styles/Logo.js';
-import Form from '../shared/styles/Form.js';
-import Button from '../shared/styles/Button.js';
-import SignUpOrSignIn from '../shared/styles/SignUpOrSignIn.js';
+import Container from './shared/styles/Container.js';
+import Logo from './shared/styles/Logo.js';
+import Form from './shared/styles/Form.js';
+import Button from './shared/styles/Button.js';
+import SignUpOrSignIn from './shared/styles/SignUpOrSignIn.js';
 
 export default function SignIn() {
     return (
