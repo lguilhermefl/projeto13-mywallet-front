@@ -51,6 +51,8 @@ const GlobalStyle = createGlobalStyle`
     body {
         background: #8C11BE;
         font-family: Raleway, sans-serif;
+        display: flex;
+        justify-content: center;
     }
 
     a {

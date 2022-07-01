@@ -4,7 +4,7 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     gap: 13px;
-    max-width: 325px;
+    max-width: 100%;
     
     input {
         background: #FFFFFF;
