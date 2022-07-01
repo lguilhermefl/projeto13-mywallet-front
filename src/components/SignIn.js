@@ -16,7 +16,9 @@ export default function SignIn() {
                 <input placeholder="Senha" />
                 <Button>Entrar</Button>
             </Form>
-            <SignUpOrSignIn>Primeira vez? Cadastre-se!</SignUpOrSignIn>
+            <Link to="/signup">
+                <SignUpOrSignIn>Primeira vez? Cadastre-se!</SignUpOrSignIn>
+            </Link>
         </Container>
     );
 };

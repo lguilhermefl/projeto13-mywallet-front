@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SignUpOrSignIn = styled.span`
+const SignUpOrSignIn = styled.div`
 margin-top: 35px;
 color: #FFFFFF;
 font-size: 15px;
