@@ -9,7 +9,7 @@ import SignUpOrSignIn from './shared/styles/SignUpOrSignIn.js';
 
 export default function SignUp() {
     return (
-        <Container>
+        <Container justifyContent="center">
             <Logo>MyWallet</Logo>
             <Form>
                 <input placeholder="Nome" />

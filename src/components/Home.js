@@ -28,11 +28,11 @@ const History = styled.div`
     width: 100%;
     background: #FFFFFF;
     border-radius: 5px;
+    margin: 25px 0 15px;
 `
 
 const EntryBox = styled.div`
     width: 100%;
-    margin-top: 13px;
     display: flex;
     justify-content: space-between;
     gap: 15px;

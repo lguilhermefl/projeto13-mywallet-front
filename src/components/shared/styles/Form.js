@@ -4,7 +4,8 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     gap: 13px;
-    max-width: 100%;
+    width: 100%;
+    margin-top: ${props => props.marginTop};
     
     input {
         background: #FFFFFF;

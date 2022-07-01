@@ -7,7 +7,7 @@ const Header = styled.div`
     color: #FFFFFF;
     font-size: 26px;
     font-weight: 700;
-    margin-bottom: 22px;
+    margin-top: 25px;
 `
 
 export default Header;
