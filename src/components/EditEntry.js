@@ -133,7 +133,7 @@ export default function EditEntry() {
                     onChange={e => setNewEntry({ ...newEntry, description: e.target.value })}
                 />
                 <Button disabled={loading}>
-                    {!loading ? "Salvar saída" : <ThreeDots color="#FFFFFF" />}
+                    {!loading ? `Salvar ${headerTitle}` : <ThreeDots color="#FFFFFF" />}
                 </Button>
             </>
         );
