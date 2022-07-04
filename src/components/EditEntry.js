@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
-import checkForToken from './shared/styles/checkForToken';
+import checkForToken from './shared/functions/checkForToken';
 import { API_URL } from './App';
 
 import Button from './shared/styles/Button';

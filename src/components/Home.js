@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import checkForToken from './shared/styles/checkForToken';
+import checkForToken from './shared/functions/checkForToken';
 import { API_URL } from './App';
 
 import AddEntry from './shared/styles/AddEntry';
