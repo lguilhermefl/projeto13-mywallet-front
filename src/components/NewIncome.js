@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 import checkForToken from './shared/styles/checkForToken';
 import { API_URL } from './App';
@@ -10,7 +10,7 @@ import Container from "./shared/styles/Container";
 import Form from "./shared/styles/Form";
 import Header from "./shared/styles/Header";
 
-export default function EditEntry() {
+export default function NewIncome() {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,44 +20,11 @@ export default function EditEntry() {
         checkForToken(navigate, route, route);
     }, []);
 
-    const [newEntry, setNewEntry] = useState({
+    const [newIncome, setNewIncome] = useState({
         value: "",
         description: ""
     });
     const [loading, setLoading] = useState(false);
-    const { id } = useParams();
-    const [headerTitle, setHeaderTitle] = useState();
-
-    const defineHeader = records => {
-        const [entryToEdit] = records.filter(record => record._id === id);
-
-        if (entryToEdit.type === "income") {
-            setHeaderTitle("entrada");
-            return;
-        } else if (entryToEdit.type === "expense") {
-            setHeaderTitle("saída");
-            return;
-        };
-    };
-
-    useEffect(() => {
-        const URL = `${API_URL}/records`;
-        const token = localStorage.getItem("token");
-        const config = {
-            headers: {
-                "Authorization": token
-            }
-        };
-
-        axios
-            .get(URL, config)
-            .then(({ data }) => {
-                defineHeader(data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }, []);
 
     const updateNumber = (e) => {
         let value = e.target.value;
@@ -66,21 +33,21 @@ export default function EditEntry() {
             if (newValue[1]?.length > 2) {
                 newValue[1] = newValue[1].slice(0, 2);
                 newValue = newValue.join(".");
-                setNewEntry({ ...newEntry, newValue });
+                setNewIncome({ ...newIncome, newValue });
             } else {
-                setNewEntry({ ...newEntry, value });
+                setNewIncome({ ...newIncome, value });
             }
         } else if (value === '') {
-            setNewEntry({ ...newEntry, value });
+            setNewIncome({ ...newIncome, value });
         };
     };
 
-    const editEntry = e => {
+    const addEntry = e => {
         e.preventDefault();
 
         setLoading(true);
 
-        const URL = `${API_URL}/records/${id}`;
+        const URL = `${API_URL}/records`;
         const token = localStorage.getItem("token");
         const config = {
             headers: {
@@ -88,14 +55,16 @@ export default function EditEntry() {
             }
         };
         const body = {
-            value: Number(newEntry.value),
-            description: newEntry.description,
+            value: Number(newIncome.value),
+            description: newIncome.description,
+            date: Date.now(),
+            type: "income"
         };
 
         axios
-            .put(URL, body, config)
+            .post(URL, body, config)
             .then(() => {
-                setNewEntry({
+                setNewIncome({
                     value: "",
                     description: ""
                 });
@@ -108,7 +77,7 @@ export default function EditEntry() {
             });
     };
 
-    const createEditForm = () => {
+    const createEntryForm = () => {
         return (
             <>
                 <input
@@ -118,7 +87,7 @@ export default function EditEntry() {
                     min={0.01}
                     max={999999.99}
                     step="0.01"
-                    value={newEntry.value}
+                    value={newIncome.value}
                     onChange={updateNumber}
                     pattern="/^(?!0\d+)\d*(\.\d{2})?$/"
                     placeholder="Valor"
@@ -129,22 +98,22 @@ export default function EditEntry() {
                     type="text"
                     maxLength="20"
                     placeholder="Descrição"
-                    value={newEntry.description}
-                    onChange={e => setNewEntry({ ...newEntry, description: e.target.value })}
+                    value={newIncome.description}
+                    onChange={e => setNewIncome({ ...newIncome, description: e.target.value })}
                 />
                 <Button disabled={loading}>
-                    {!loading ? "Salvar saída" : <ThreeDots color="#FFFFFF" />}
+                    {!loading ? "Salvar entrada" : <ThreeDots color="#FFFFFF" />}
                 </Button>
             </>
         );
     };
 
-    const editForm = createEditForm();
+    const entryForm = createEntryForm();
 
     return (
         <Container>
-            <Header>Editar {headerTitle}</Header>
-            <Form marginTop="40px" onSubmit={editEntry}>{editForm}</Form>
+            <Header>Nova entrada</Header>
+            <Form marginTop="40px" onSubmit={addEntry}>{entryForm}</Form>
         </Container>
     );
 }

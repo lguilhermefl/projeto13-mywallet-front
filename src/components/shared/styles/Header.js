@@ -8,6 +8,13 @@ const Header = styled.div`
     font-size: 26px;
     font-weight: 700;
     margin-top: 25px;
+
+    span {
+        max-width: 270px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 `
 
 export default Header;
