@@ -26,7 +26,7 @@ export default function EditEntry() {
     });
     const [loading, setLoading] = useState(false);
     const { id } = useParams();
-    const [headerTitle, setHeaderTitle] = useState();
+    const [headerTitle, setHeaderTitle] = useState("");
 
     const defineHeader = records => {
         const [entryToEdit] = records.filter(record => record._id === id);
