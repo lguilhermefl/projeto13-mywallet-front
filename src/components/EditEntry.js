@@ -50,7 +50,7 @@ export default function EditEntry() {
                 }
             };
 
-            axios
+            await axios
                 .get(URL, config)
                 .then(({ data }) => {
                     defineHeader(data);
