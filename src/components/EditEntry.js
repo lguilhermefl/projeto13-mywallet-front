@@ -41,22 +41,26 @@ export default function EditEntry() {
     };
 
     useEffect(() => {
-        const URL = `${API_URL}/records`;
-        const token = localStorage.getItem("token");
-        const config = {
-            headers: {
-                "Authorization": token
-            }
+        async function getUserRecords() {
+            const URL = `${API_URL}/records`;
+            const token = localStorage.getItem("token");
+            const config = {
+                headers: {
+                    "Authorization": token
+                }
+            };
+
+            axios
+                .get(URL, config)
+                .then(({ data }) => {
+                    defineHeader(data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         };
 
-        axios
-            .get(URL, config)
-            .then(({ data }) => {
-                defineHeader(data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        getUserRecords();
     }, []);
 
     const updateNumber = (e) => {
